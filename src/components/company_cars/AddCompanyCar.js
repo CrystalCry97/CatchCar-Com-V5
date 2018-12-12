@@ -26,6 +26,15 @@ class AddCompanyCar extends Component {
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
                     <h5 className="grey-text text-darken-3">Add New Car</h5>
+                    <div class="file-field input-field">
+                        <div class="btn orange lighten-1 z-depth-0">
+                            <span>Upload Car Image</span>
+                            <input type="file" accept="image/*" />
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text"/>
+                        </div>
+                    </div>
                     <div className="input-field">
                         <label  htmlFor="carName">Car Name</label>
                         <input type="text" id="carName" onChange={this.handleChange}/>
