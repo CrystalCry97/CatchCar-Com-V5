@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import FrontSearchCar from './FrontSearchCar'
 
 class FrontPage extends Component {
     render(){
@@ -6,7 +7,7 @@ class FrontPage extends Component {
             <div className="dashboard container">
                 <div className="row">
                     <div className="col s12 ">
-                        <p>This is front page</p>
+                        <FrontSearchCar />
                     </div>
                 </div>
             </div>
