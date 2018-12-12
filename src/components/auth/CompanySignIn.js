@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux'
+import { companySignIn } from '../../store/actions/companyAuthActions'
+import { Redirect } from 'react-router-dom'
 
 class CompanySignIn extends Component {
     state={
@@ -13,10 +15,15 @@ class CompanySignIn extends Component {
     }
     handleSubmit=(e) => {
         e.preventDefault();
-        console.log(this.state)
+        this.props.companySignIn(this.state);
     }
     
     render() {
+        const { companyAuthError, companyAuth } = this.props;
+
+        if(companyAuth.uid)
+            return <Redirect to='/company-dashboard' />
+
         return(
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
@@ -31,6 +38,9 @@ class CompanySignIn extends Component {
                     </div>
                     <div className="input-field">
                         <button className="btn orange lighten-1 z-depth-0">Login</button>
+                        <div className="red-text center">
+                            { companyAuthError ? <p>{companyAuthError}</p>: null}
+                        </div>
                     </div>
                 </form>
             </div>
@@ -38,5 +48,17 @@ class CompanySignIn extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        companyAuthError: state.companyAuth.companyAuthError,
+        companyAuth: state.firebase.auth
+    }
+}
 
-export default CompanySignIn 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        companySignIn: (creds) => dispatch(companySignIn(creds))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CompanySignIn) 

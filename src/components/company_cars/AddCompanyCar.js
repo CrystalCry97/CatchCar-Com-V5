@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addCompanyCar } from '../../store/actions/companyCarActions'
+import { Redirect } from 'react-router-dom'
 
 
 class AddCompanyCar extends Component {
@@ -19,20 +20,26 @@ class AddCompanyCar extends Component {
         e.preventDefault();
         //console.log(this.state)
         this.props.addCompanyCar(this.state)
+        this.props.history.push('/company-dashboard');
     }
     
     render() {
+        const { companyAuth } = this.props;
+        //console.log(this.props);
+        if(!companyAuth.uid)
+            return <Redirect to='/company-signin' />
+
         return(
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
                     <h5 className="grey-text text-darken-3">Add New Car</h5>
-                    <div class="file-field input-field">
-                        <div class="btn orange lighten-1 z-depth-0">
+                    <div className="file-field input-field">
+                        <div className="btn orange lighten-1 z-depth-0">
                             <span>Upload Car Image</span>
                             <input type="file" accept="image/*" />
                         </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text"/>
+                        <div className="file-path-wrapper">
+                            <input className="file-path validate" type="text"/>
                         </div>
                     </div>
                     <div className="input-field">
@@ -52,11 +59,17 @@ class AddCompanyCar extends Component {
                         <textarea id="carOtherFeatures" className="materialize-textarea" onChange={this.handleChange}/>
                     </div>
                     <div className="input-field">
-                        <button className="btn orange lighten-1 z-depth-0">Login</button>
+                        <button className="btn orange lighten-1 z-depth-0">Add Car</button>
                     </div>
                 </form>
             </div>
         )
+    }
+}
+
+const mapStateToProps = (state) => {    
+    return {
+        companyAuth: state.firebase.auth
     }
 }
 
@@ -66,4 +79,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(null,mapDispatchToProps)(AddCompanyCar) 
+export default connect(mapStateToProps,mapDispatchToProps)(AddCompanyCar) 

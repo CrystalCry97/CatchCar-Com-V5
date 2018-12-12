@@ -15,6 +15,7 @@ body {
 form{
   padding:20px;
   margin-top: 60px;
+  border-radius: 20px;
 }
 
 form button, form h5{
@@ -27,6 +28,21 @@ form button, form h5{
     margin-bottom: 10px;
     width:300px;
     height:300px;
+}
+
+.profile{
+  margin-top: 50px;
+  padding: 20px;
+  background: white;
+  border-radius: 20px;
+}
+
+.font-bold{
+  font-weight:bold;
+}
+
+h5{
+  font-weight:bold;
 }
 
 input[type=text]:not(.browser-default):focus:not([readonly]),
