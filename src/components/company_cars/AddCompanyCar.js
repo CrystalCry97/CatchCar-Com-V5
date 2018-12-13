@@ -19,7 +19,8 @@ class AddCompanyCar extends Component {
     handleSubmit=(e) => {
         e.preventDefault();
         //console.log(this.state)
-        this.props.addCompanyCar(this.state)
+        //this.props.addCompanyCar(this.state)
+        console.log(this.props);
         this.props.history.push('/company-dashboard');
     }
     
@@ -28,7 +29,6 @@ class AddCompanyCar extends Component {
         //console.log(this.props);
         if(!companyAuth.uid)
             return <Redirect to='/company-signin' />
-
         return(
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">

@@ -4,12 +4,8 @@ import FrontSearchCar from './FrontSearchCar'
 class FrontPage extends Component {
     render(){
         return (
-            <div className="dashboard container">
-                <div className="row">
-                    <div className="col s12 ">
-                        <FrontSearchCar />
-                    </div>
-                </div>
+            <div className="dashboard container frontpage">
+                <FrontSearchCar />
             </div>
         )
     }

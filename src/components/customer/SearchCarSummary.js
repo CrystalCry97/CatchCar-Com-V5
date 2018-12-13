@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 
-const CompanyCarSummary = ({companyCar}) =>{
+const SearchCarSummary = ({companyCar}) =>{
     return(
         <div className="card z-depth-0 project-summary">
             <div className="card-content grey-text text-darken-3">
@@ -13,4 +13,4 @@ const CompanyCarSummary = ({companyCar}) =>{
     )
 }
 
-export default CompanyCarSummary
+export default SearchCarSummary

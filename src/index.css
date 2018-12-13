@@ -23,11 +23,15 @@ form button, form h5{
 }
 
 .circular_img{
-    border: 3px solid white;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    width:300px;
-    height:300px;
+  border: 3px solid white;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  width:200px;
+  height:200px;
+}
+
+.frontpage{
+  margin-top: 20px;
 }
 
 .profile{

@@ -1,23 +1,20 @@
 import React, { Component } from 'react'
-import CompanyCarList from '../company_cars/CompanyCarList'
+import SearchCarList from '../customer/SearchCarList'
+import SearchCarFilters from '../customer/SearchCarFilters'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import { Redirect } from 'react-router-dom'
 
-class Dashboard extends Component {
+class SearchResultPage extends Component {
     render(){
-        // console.log(this.props);
-        const { companyCars, companyAuth }=this.props;
 
-        if(!companyAuth.uid)
-            return <Redirect to='/company-signin' />
-
+        const { companyCars }=this.props;
         return (
             <div className="dashboard container">
+                <SearchCarFilters />
                 <div className="row">
                     <div className="col s12 ">
-                        <CompanyCarList companyCars= {companyCars}/>
+                        <SearchCarList companyCars= {companyCars}/>
                     </div>
                 </div>
             </div>
@@ -25,10 +22,10 @@ class Dashboard extends Component {
     }
 }
 
-const mapStateToProps = (state) => {    
+const mapStateToProps = (state) => {
+    console.log(state);    
     return {
-        companyCars: state.firestore.ordered.companyCars,
-        companyAuth: state.firebase.auth
+        companyCars: state.firestore.ordered.companyCars
     }
 }
 
@@ -37,6 +34,9 @@ export default compose(
     firestoreConnect([
         { 
             collection: 'companyCars',
+            where: [
+                ['companyName', '==', 'ABC Car Rental']
+            ]
         }
     ])
-)(Dashboard)
+)(SearchResultPage)
