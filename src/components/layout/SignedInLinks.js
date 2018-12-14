@@ -5,14 +5,13 @@ import { companySignOut } from '../../store/actions/companyAuthActions'
 
 const SignedInLinks = (props) => {
     return (
-        <ul className="right">
-            <li><NavLink to="/company-dashboard">Dashboard</NavLink></li>
-            <li><NavLink to="/company-addcar">Add New Car</NavLink></li>
-            <li><NavLink to="/company-profile">Company Profile</NavLink></li>
-            {/* eslint-disable-next-line */}
-            <li><a onClick={props.companySignOut}>Log Out</a></li>
-            <li><NavLink to="/" className="btn btn-floating grey lighten-1">CC</NavLink></li>
-        </ul>
+        <div>
+                <li><NavLink to="/company-dashboard">Dashboard</NavLink></li>
+                <li><NavLink to="/company-addcar">Add New Car</NavLink></li>
+                <li><NavLink to="/company-profile">Company Profile</NavLink></li>
+                {/* eslint-disable-next-line */}
+                <li><a onClick={props.companySignOut}>Log Out</a></li>
+        </div>        
     )
 }
 
