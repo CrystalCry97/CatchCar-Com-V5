@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import { companySignUp } from '../../store/actions/companyAuthActions'
 
 class CompanySignUp extends Component {
     state={
@@ -17,10 +19,15 @@ class CompanySignUp extends Component {
     }
     handleSubmit=(e) => {
         e.preventDefault();
-        console.log(this.state)
+        this.props.companySignUp(this.state);
     }
     
     render() {
+        const { companyAuth, companyAuthError } = this.props;
+
+        if(companyAuth.uid)
+            return <Redirect to='/company-dashboard' />
+
         return(
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
@@ -38,7 +45,7 @@ class CompanySignUp extends Component {
                         <input type="text" id="companyName" onChange={this.handleChange}/>
                     </div>
                     <div className="input-field">
-                        <label  htmlFor="headquartersLocation">Headquarters Location</label>
+                        <label  htmlFor="headquartersLocation">Headquarters Location City (e.g Gelugor)</label>
                         <input type="text" id="headquartersLocation" onChange={this.handleChange}/>
                     </div>
                     <div className="input-field">
@@ -51,6 +58,9 @@ class CompanySignUp extends Component {
                     </div>
                     <div className="input-field">
                         <button className="btn orange lighten-1 z-depth-0">Login</button>
+                        <div className="red-text center">
+                            { companyAuthError ? <p>{companyAuthError}</p>: null}
+                        </div>
                     </div>
                 </form>
             </div>
@@ -58,5 +68,17 @@ class CompanySignUp extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        companyAuth: state.firebase.auth,
+        companyAuthError: state.companyAuth.companyAuthError
+    }
+}
 
-export default CompanySignUp 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        companySignUp: (newCompany) => dispatch(companySignUp(newCompany))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CompanySignUp) 

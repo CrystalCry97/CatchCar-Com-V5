@@ -1,15 +1,15 @@
 import React from 'react'
-import CompanyCarSummary from './CompanyCarSummary'
+import SearchCarSummary from './SearchCarSummary'
 import { Link } from 'react-router-dom'
 
-const ProjectList = ({companyCars}) => {
+const SearchCarList = ({companyCars}) => {
     return (
         <div className="project-list section">
             { 
                 companyCars && companyCars.map(companyCar => {
                     return (
-                        <Link to={'/companyCar/' + companyCar.id} key={companyCar.id}>
-                            <CompanyCarSummary companyCar={companyCar}/>
+                        <Link to={'/searchresult/' + companyCar.id} key={companyCar.id}>
+                            <SearchCarSummary companyCar={companyCar}/>
                         </Link>
                     )
                 })
@@ -18,4 +18,4 @@ const ProjectList = ({companyCars}) => {
     )
 }
 
-export default ProjectList
+export default SearchCarList
