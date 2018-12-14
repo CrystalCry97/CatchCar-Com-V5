@@ -7,7 +7,6 @@ import { Redirect } from 'react-router-dom'
 
 class Dashboard extends Component {
     render(){
-        // console.log(this.props);
         const { companyCars, companyAuth }=this.props;
 
         if(!companyAuth.uid)
@@ -36,7 +35,7 @@ export default compose(
     connect(mapStateToProps),
     firestoreConnect([
         { 
-            collection: 'companyCars',
+            collection: 'companyCars'
         }
     ])
 )(Dashboard)

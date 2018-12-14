@@ -8,6 +8,7 @@ export const addCompanyCar = (companyCar) => {
             ...companyCar,
             companyName: companyProfile.companyName,
             companyID: companyID,
+            locationArea: companyProfile.headquartersLocation,
             createdAt: new Date()
         }).then(() => {
             dispatch({type: 'ADD_COMPANY_CAR',companyCar});

@@ -7,7 +7,6 @@ import { compose } from 'redux'
 
 class SearchResultPage extends Component {
     render(){
-
         const { companyCars }=this.props;
         return (
             <div className="dashboard container">
@@ -23,19 +22,20 @@ class SearchResultPage extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);    
+    // console.log(state.carFilters.pickupLocation);    
     return {
-        companyCars: state.firestore.ordered.companyCars
+        companyCars: state.firestore.ordered.companyCars,
+        pickupLocation: state.carFilters.pickupLocation
     }
 }
 
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([
+    firestoreConnect(pickupLocation =>[
         { 
             collection: 'companyCars',
-            where: [
-                ['companyName', '==', 'ABC Car Rental']
+            where:[
+                ['locationArea', '==', pickupLocation.pickupLocation]
             ]
         }
     ])

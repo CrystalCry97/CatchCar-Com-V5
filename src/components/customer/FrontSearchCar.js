@@ -1,32 +1,34 @@
-import React from 'react'
-// import { firestoreConnect } from 'react-redux-firebase'
+import React from 'react';
 
-class FrontSearchCar extends React.Component{
+export default class FrontSearchCar extends React.Component{
     state= {
+
         pickupLocation: ''
     }
 
-    handleChange = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
+    onPickupLocationChange= (e) => {
+        const pickupLocation= e.target.value;
+        this.setState(() => ({pickupLocation}));
     }
 
-    handleSubmit= (e) => {
+    onSubmit= (e) => {
         e.preventDefault();
-        console.log(this.state.pickupLocation);
+        this.props.onSubmit({
+            pickupLocation: this.state.pickupLocation
+        });
+        // console.log("Submit");
     }
 
     render(){
         return(
             <div className="center">
-                <form onSubmit={this.handleSubmit} >
+                <form onSubmit={this.onSubmit} >
                     <div  className="center">
                         <img className="circular_img" src="/img/catchcar.png" alt="CatchCar Main Logo"/>
                     </div>
                     <div className="input-field">
                         <label  htmlFor="pickupLocation">Pickup Place</label>
-                        <input type="text" id="pickupLocation" onChange={this.handleChange}/>
+                        <input type="text" id="pickupLocation" className="text-white" onChange={this.onPickupLocationChange}/>
                     </div>
                     <button className="btn orange lighten-1 z-depth-0">Find cars</button>
                 </form>
@@ -35,6 +37,3 @@ class FrontSearchCar extends React.Component{
     }
 }
 
-
-
-export default (FrontSearchCar) 

@@ -1,11 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { setPickupLocationFilter } from '../actions/filters';
+import { setPickupLocationFilter } from '../../store/actions/carFiltersActions';
 
 class CarListFilters extends React.Component{
-    state ={
-        pickUpLocation:'',
-    };
+    constructor (props){
+        super(props);
+        this.state ={
+            pickUpLocation:props.pickup
+        };
+    }
+    
 
     onPickupLocationChange = (e) =>{
         const pickUpLocation= e.target.value;
@@ -15,36 +19,48 @@ class CarListFilters extends React.Component{
 
     onSubmit = (e) =>{
         e.preventDefault();
-        // this.props.dispatch(setPickupLocationFilter(this.state.pickUpLocation));
+        this.props.setPickupLocationFilter(this.state.pickUpLocation);
     };
+
 
     render(){
         return (
             <div className="carlistfilters">
-                <form onSubmit={this.onSubmit}>
-                    <div className="input-field">
-                        <label  htmlFor="pickupLocation">Pickup Place</label>
-                        <input 
-                            type="text"
-                            id="pickupLocation" 
-                            value={this.state.pickUpLocation}
-                            onChange= {this.onPickupLocationChange}
-                        />
+                <form onSubmit={this.onSubmit} >
+                    <div class="row">
+                        <div class="col s12">
+                            <div className="input-field inline">
+                                <input 
+                                    type="text"
+                                    id="pickupLocation" 
+                                    className="text-white"
+                                    value={this.state.pickUpLocation}
+                                    onChange= {this.onPickupLocationChange}
+                                    placeholder="Pickup Place"
+                                />
+                            </div>
+                        <button className="btn orange lighten-1 z-depth-0 ">Find cars</button>
+                        </div>
                     </div>
-                    <button className="btn orange lighten-1 z-depth-0">Find cars</button>
+                    
                 </form>
-
             </div>
         );
     }
 
 };
 
-const mapStatetoProps = (state) => {
+
+const mapDispatchToProps = (dispatch) => {
     return {
-        filters:state.filters
-    };
-};
+        setPickupLocationFilter: (pickUpLocation) => dispatch(setPickupLocationFilter(pickUpLocation))
+    }
+}
 
+const mapStateToProps = (state) => {
+    return {
+        pickup: state.carFilters.pickupLocation
+    }
+}
 
-export default connect(mapStatetoProps)(CarListFilters);
+export default connect(mapStateToProps,mapDispatchToProps)(CarListFilters);

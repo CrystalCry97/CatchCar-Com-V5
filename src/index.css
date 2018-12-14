@@ -19,7 +19,7 @@ form{
 }
 
 form button, form h5{
-  margin:20px 0;
+  margin:20px 10px;
 }
 
 .circular_img{
@@ -43,6 +43,15 @@ form button, form h5{
 
 .font-bold{
   font-weight:bold;
+}
+
+.text-white{
+  color: white;
+}
+
+.car-img{
+  width:auto;
+  height:200px;
 }
 
 h5{

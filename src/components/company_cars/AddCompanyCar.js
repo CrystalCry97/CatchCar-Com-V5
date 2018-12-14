@@ -19,8 +19,7 @@ class AddCompanyCar extends Component {
     handleSubmit=(e) => {
         e.preventDefault();
         //console.log(this.state)
-        //this.props.addCompanyCar(this.state)
-        console.log(this.props);
+        this.props.addCompanyCar(this.state)
         this.props.history.push('/company-dashboard');
     }
     
@@ -36,7 +35,7 @@ class AddCompanyCar extends Component {
                     <div className="file-field input-field">
                         <div className="btn orange lighten-1 z-depth-0">
                             <span>Upload Car Image</span>
-                            <input type="file" accept="image/*" />
+                            <input type="file" id="carImage" accept="image/*"  />
                         </div>
                         <div className="file-path-wrapper">
                             <input className="file-path validate" type="text"/>

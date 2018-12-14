@@ -8,7 +8,7 @@ const SearchCarList = ({companyCars}) => {
             { 
                 companyCars && companyCars.map(companyCar => {
                     return (
-                        <Link to={'/companyCar/' + companyCar.id} key={companyCar.id}>
+                        <Link to={'/searchresult/' + companyCar.id} key={companyCar.id}>
                             <SearchCarSummary companyCar={companyCar}/>
                         </Link>
                     )

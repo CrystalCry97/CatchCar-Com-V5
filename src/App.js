@@ -9,6 +9,8 @@ import CompanySignIn from './components/auth/CompanySignIn'
 import CompanySignUp from './components/auth/CompanySignUp'
 import AddCompanyCar from './components/company_cars/AddCompanyCar'
 import SearchResultPage from './components/customer/SearchResultPage' 
+import SearchCarDetails from './components/customer/SearchCarDetails';
+
 
 class App extends Component {
   render() {
@@ -19,6 +21,7 @@ class App extends Component {
           <Switch>
             <Route exact path='/' component={FrontPage} />
             <Route path='/companyCar/:id' component={CompanyCarDetails} />
+            <Route exact path='/searchresult/:id' component={SearchCarDetails} />
             <Route path='/company-dashboard' component={Dashboard} />
             <Route path='/company-signin' component={CompanySignIn} />
             <Route path='/company-signup' component={CompanySignUp} />

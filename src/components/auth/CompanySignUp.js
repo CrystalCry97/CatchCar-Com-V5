@@ -45,7 +45,7 @@ class CompanySignUp extends Component {
                         <input type="text" id="companyName" onChange={this.handleChange}/>
                     </div>
                     <div className="input-field">
-                        <label  htmlFor="headquartersLocation">Headquarters Location</label>
+                        <label  htmlFor="headquartersLocation">Headquarters Location City (e.g Gelugor)</label>
                         <input type="text" id="headquartersLocation" onChange={this.handleChange}/>
                     </div>
                     <div className="input-field">
