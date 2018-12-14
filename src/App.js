@@ -10,7 +10,7 @@ import CompanySignUp from './components/auth/CompanySignUp'
 import AddCompanyCar from './components/company_cars/AddCompanyCar'
 import SearchResultPage from './components/customer/SearchResultPage' 
 import SearchCarDetails from './components/customer/SearchCarDetails'
-import BookingPage from './components/booking/BookingPage';
+
 
 
 class App extends Component {
@@ -29,7 +29,6 @@ class App extends Component {
             <Route path='/company-profile' component={CompanyProfile} />
             <Route path='/company-addcar' component={AddCompanyCar} />
             <Route path='/searchresult' component={SearchResultPage} />
-            <Route path='/searchresult/:id/booking' component={BookingPage} />
           </Switch>
         </div>
       </BrowserRouter>

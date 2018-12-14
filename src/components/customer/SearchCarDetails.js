@@ -2,10 +2,33 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import {Button, Modal} from 'react-materialize'
+import {Button, Modal, Row, Input} from 'react-materialize'
 import moment from 'moment'
+import { carBooking } from '../../store/actions/carBookActions'
+
 
 class SearchCarDetails extends Component {
+    state ={
+        customerName:'',
+        customerContact:'',
+        customerEmail:'',
+        customerPickUpDate:'',
+        customerPickupTime:'',
+        customerReturnDate:'',
+        customerReturnTime:''
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    }
+    handleSubmit=(e) => {
+        e.preventDefault();
+        this.props.carBooking(this.state);
+    }
+
+
     render(){
         const { companyCar } = this.props;
 
@@ -22,35 +45,40 @@ class SearchCarDetails extends Component {
                             <Modal
                                 header='Booking Information'
                                 trigger={<Button>BOOK NOW !</Button>}>
+                                <form onSubmit={this.handleSubmit}>
                                 <div className="input-field">
                                     <label  htmlFor="customerName">Your Name</label>
-                                    <input type="text" id="customerName"/>
+                                    <input type="text" id="customerName" onChange={this.handleChange}/>
                                 </div>
                                 <div className="input-field">
                                     <label  htmlFor="customerContact">Contact No</label>
-                                    <input type="text" id="customerContact"/>
+                                    <input type="tel" id="customerContact" onChange={this.handleChange}/>
                                 </div>
                                 <div className="input-field">
                                     <label  htmlFor="customerEmail">Email</label>
-                                    <input type="text" id="customerEmail"/>
+                                    <input type="email" id="customerEmail" onChange={this.handleChange}/>
                                 </div>
                                 <div className="input-field">
                                     <label  htmlFor="customerPickupDate">Pickup Date</label>
-                                    <input type="text" id="customerPickupDate"/>
+                                    <input type="date" id="customerPickupDate" onChange={this.handleChange}/>
                                 </div>
                                 <div className="input-field">
                                     <label  htmlFor="customerPickupTime">Pickup Time</label>
-                                    <input type="text" id="customerPickupTime"/>
+                                    <input type="time" id="customerPickupTime" onChange={this.handleChange}/>
                                 </div>
                                 <div className="input-field">
                                     <label  htmlFor="customerReturnDate">Return Date</label>
-                                    <input type="text" id="customerReturnDate"/>
+                                    <input type="date" id="customerReturnDate" onChange={this.handleChange}/>
                                 </div>
                                 <div className="input-field">
                                     <label  htmlFor="customerReturnTime">Return Time</label>
-                                    <input type="text" id="customerReturnTime"/>
+                                    <input type="time" id="customerReturnTime" onChange={this.handleChange}/>
                                 </div>
-                                <a href='/' className="btn orange lighten-1 z-depth-0">Submit</a>
+
+                            
+
+                                <button href='#' className="btn orange lighten-1 z-depth-0">Submit</button>
+                                </form>
                             </Modal>
                         </div>
                         <div className="card-action grey lighten-4 grey-text">
@@ -79,9 +107,16 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        carBooking: (newBooking) => dispatch(carBooking(newBooking))
+    }
+}
+
 export default compose(
-    connect(mapStateToProps),
+    connect(mapStateToProps, mapDispatchToProps ),
     firestoreConnect([
         { collection: 'companyCars' }
     ])
 )(SearchCarDetails)
+
