@@ -27,8 +27,8 @@ class CarListFilters extends React.Component{
         return (
             <div className="carlistfilters">
                 <form onSubmit={this.onSubmit} >
-                    <div class="row">
-                        <div class="col s12">
+                    <div className="row">
+                        <div className="col s12">
                             <div className="input-field inline">
                                 <input 
                                     type="text"

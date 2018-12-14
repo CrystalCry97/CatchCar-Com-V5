@@ -16,7 +16,7 @@ class SearchCarDetails extends Component {
                 <div className="container section project-details">
                     <div className="card z-depth-0">
                         <div className="card-content">
-                            <img className="car-img" src="/img/saga.jpg" alt="Car image"></img>
+                            <img className="car-img" src={companyCar.carImageURL} alt="Car"/>
                             <span className="card-title">{ companyCar.carName }</span>
                             <p>Number of Seats: {companyCar.carSeater}</p>
                             <p>Transmission   : {companyCar.carTransmission}</p>

@@ -5,7 +5,7 @@ const SearchCarSummary = ({companyCar}) =>{
     return(
         <div className="card z-depth-0 project-summary">
             <div className="card-content grey-text text-darken-3">
-                <img className="car-img" src="/img/saga.jpg" alt="Car image"></img>
+                <img className="car-img" src={companyCar.carImageURL} alt="Car"></img>
                 <span className="card-title">{companyCar.carName}</span>
                 <p>{companyCar.companyName}</p>
                 <p>Pickup Location: {companyCar.locationArea}</p>

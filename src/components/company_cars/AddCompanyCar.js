@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addCompanyCar } from '../../store/actions/companyCarActions'
 import { Redirect } from 'react-router-dom'
-
+import { storage } from '../../config/firebaseConfig'
 
 class AddCompanyCar extends Component {
     state={
+        carImage:null,
+        carImageURL:'',
         carName:'',
         carSeater: '',
         carTransmission:'',
@@ -16,10 +18,33 @@ class AddCompanyCar extends Component {
             [e.target.id]: e.target.value
         })
     }
+    handleChangeImage= (e) => {
+        if(e.target.files[0]){
+            const carImage = e.target.files[0];
+            //console.log( "carImage " +carImage)
+            this.setState(()=>({carImage}));
+        }
+    }
     handleSubmit=(e) => {
         e.preventDefault();
         //console.log(this.state)
-        this.props.addCompanyCar(this.state)
+        const { companyAuth } = this.props;
+        const { carImage } = this.state;
+        const uploadTask= storage.ref(`carImages/${carImage.name}`).put(carImage);
+        uploadTask.on('state_changed',
+            (snapshot) => {
+
+            },(error) => {
+                console.log(error);
+            },() => {
+                storage.ref(`carImages`).child(carImage.name).getDownloadURL().then(carImageURL => {
+                    console.log(carImageURL);
+                    this.setState({carImageURL});
+                }).then(() => {
+                    this.props.addCompanyCar(this.state)
+                })
+                
+            });
         this.props.history.push('/company-dashboard');
     }
     
@@ -35,7 +60,7 @@ class AddCompanyCar extends Component {
                     <div className="file-field input-field">
                         <div className="btn orange lighten-1 z-depth-0">
                             <span>Upload Car Image</span>
-                            <input type="file" id="carImage" accept="image/*"  />
+                            <input type="file" id="carImage" accept="image/*" onChange={this.handleChangeImage} />
                         </div>
                         <div className="file-path-wrapper">
                             <input className="file-path validate" type="text"/>

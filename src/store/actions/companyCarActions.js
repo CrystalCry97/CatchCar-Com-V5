@@ -5,7 +5,12 @@ export const addCompanyCar = (companyCar) => {
         const companyProfile = getState().firebase.profile;
         const companyID = getState().firebase.auth.uid;
         firestore.collection('companyCars').add({
-            ...companyCar,
+            //...companyCar,
+            carName: companyCar.carName,
+            carSeater: companyCar.carSeater,
+            carTransmission: companyCar.carTransmission,
+            carOtherFeatures: companyCar.carOtherFeatures,
+            carImageURL: companyCar.carImageURL,
             companyName: companyProfile.companyName,
             companyID: companyID,
             locationArea: companyProfile.headquartersLocation,
