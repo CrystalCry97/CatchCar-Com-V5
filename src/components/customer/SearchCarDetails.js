@@ -74,6 +74,7 @@ class SearchCarDetails extends Component {
                                     <label  htmlFor="customerReturnTime">Return Time</label>
                                     <input type="time" id="customerReturnTime" onChange={this.handleChange}/>
                                 </div>
+                                
 
                             
 
