@@ -36,7 +36,7 @@ class AddCompanyCar extends Component {
                         console.log(carImageURL);
                         this.setState({carImageURL});
                     }).then(() => {
-                        this.props.addCompanyCar(this.state)
+                        console.log("image upload successfully");
                     })
                     
                 });
@@ -45,6 +45,7 @@ class AddCompanyCar extends Component {
     handleSubmit=(e) => {
         e.preventDefault();
         //console.log(this.state)
+        this.props.addCompanyCar(this.state)
         this.props.history.push('/company-dashboard');
     }
     
