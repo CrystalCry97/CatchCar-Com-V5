@@ -14,10 +14,10 @@ class BookingPage extends React.Component{
 
     render(){
         return(
-            <div className="center">
-                <form onSubmit={this.handleSubmit} >
-                    
-                </form>
+            <div className="container">
+
+                    This is a booking page
+
             </div>  
         )
     }
@@ -25,4 +25,4 @@ class BookingPage extends React.Component{
 
 
 
-export default (BookingPage) 
+export default BookingPage 
