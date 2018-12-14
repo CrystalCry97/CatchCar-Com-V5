@@ -22,29 +22,29 @@ class AddCompanyCar extends Component {
         if(e.target.files[0]){
             const carImage = e.target.files[0];
             //console.log( "carImage " +carImage)
+            const { companyAuth } = this.props;
             this.setState(()=>({carImage}));
+            //const { carImage } = this.state;
+            const uploadTask= storage.ref(`carImages/${companyAuth.uid}/${carImage.name}`).put(carImage);
+            uploadTask.on('state_changed',
+                (snapshot) => {
+    
+                },(error) => {
+                    console.log(error);
+                },() => {
+                    storage.ref(`carImages/${companyAuth.uid}`).child(carImage.name).getDownloadURL().then(carImageURL => {
+                        console.log(carImageURL);
+                        this.setState({carImageURL});
+                    }).then(() => {
+                        this.props.addCompanyCar(this.state)
+                    })
+                    
+                });
         }
     }
     handleSubmit=(e) => {
         e.preventDefault();
         //console.log(this.state)
-        const { companyAuth } = this.props;
-        const { carImage } = this.state;
-        const uploadTask= storage.ref(`carImages/${carImage.name}`).put(carImage);
-        uploadTask.on('state_changed',
-            (snapshot) => {
-
-            },(error) => {
-                console.log(error);
-            },() => {
-                storage.ref(`carImages`).child(carImage.name).getDownloadURL().then(carImageURL => {
-                    console.log(carImageURL);
-                    this.setState({carImageURL});
-                }).then(() => {
-                    this.props.addCompanyCar(this.state)
-                })
-                
-            });
         this.props.history.push('/company-dashboard');
     }
     
