@@ -1,0 +1,233 @@
+<div className="container">
+<div className="py-5 text-center">
+    <img className="d-block mx-auto mb-4 border-radius" src="catchcar.png" alt="" width="100" height="100"/>
+    <h2>Booking Details</h2>
+</div>
+
+<div className="row">
+    <div className="col-md-4 order-md-2 mb-4">
+    <h4 className="d-flex justify-content-between align-items-center mb-3">
+        <span className="text-muted">Book Details</span>
+    </h4>
+    <ul className="list-group mb-3" id="book">
+    <li className="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+            <h6 className="my-0">Car Type</h6>
+        </div>
+        <span className="text-muted">Myvi</span>
+    </li>
+    <li className="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+            <h6 className="my-0">Location</h6>
+        </div>
+    <span className="text-muted">location name</span>
+    </li>
+    <li className="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+            <h6 className="my-0">Pickup Date</h6>
+        </div>
+        <span className="text-muted">dd/mm/yy</span>
+    </li>
+    <li className="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+            <h6 className="my-0">Pickup Time</h6>
+        </div>
+    <span className="text-muted">hh:mm </span>
+    </li>
+    <li className="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+            <h6 className="my-0">Dropoff Date</h6>
+        </div>
+    <span className="text-muted">dd/mm/yy</span>
+    </li>
+    <li className="list-group-item d-flex justify-content-between lh-condensed text-success">
+        <h5>Total (RM)</h5>
+        <strong>RM00</strong>
+    </li>
+    </ul>
+
+    <form className="card p-2">
+        <div className="input-group">
+            <input type="text" className="form-control" placeholder="Promo code"/>
+            <div className="input-group-append">
+                <button type="submit" className="btn btn-secondary">Redeem</button>
+            </div>
+        </div>
+    </form>
+    </div>
+
+    <div className="col-md-8 order-md-1">
+        <h4 className="mb-3">Customer Details</h4>
+        <form className="needs-validation" novalidate>
+            <div className="row">
+                <div className="col-md-6 mb-3">
+                    <label for="firstName">First name</label>
+                    <input type="text" className="form-control" id="firstName" placeholder="" value="" required/>
+                    <div className="invalid-feedback">
+                        Valid first name is required.
+                    </div>
+                </div>
+                <div className="col-md-6 mb-3">
+                    <label for="lastName">Last name</label>
+                    <input type="text" className="form-control" id="lastName" placeholder="" value="" required/>
+                    <div className="invalid-feedback">
+                        Valid last name is required.
+                    </div>
+                </div>
+            </div>
+
+            <div className="mb-3">
+                <label for="email">Contact Number </label>
+                <input type="tel" className="form-control" id="tel" placeholder="01X XXX XXXX"/>
+                <div className="invalid-feedback">
+                    Please enter a valid contact number.
+                </div>
+            </div>
+
+            <div className="mb-3">
+                <label for="email">Email </label>
+                <input type="email" className="form-control" id="email" placeholder="you@example.com"/>
+                <div classNameN="invalid-feedback">
+                    Please enter a valid email address.
+                </div>
+            </div>
+
+            <div className="mb-3">
+                <label for="address">Address</label>
+                <input type="text" className="form-control" id="address" placeholder="USM, Penang" required/>
+                <div className="invalid-feedback">
+                    Please enter your address.
+                </div>
+            </div>
+
+            <div className="row">
+                <div className="col-md-5 mb-3">
+                    <label for="country">Country</label>
+                    <select className="custom-select d-block w-100" id="country" required>
+                        <option value="">Choose...</option>
+                        <option>Malaysia</option>
+                    </select>
+                    <div className="invalid-feedback">
+                        Please select a valid country.
+                    </div>
+                </div>
+
+                <div className="col-md-4 mb-3">
+                    <label for="state">State</label>
+                    <select className="custom-select d-block w-100" id="state" required>
+                        <option value="">Choose...</option>
+                        <option>Terengganu</option>
+                        <option>Penang</option>
+                    </select>
+                    <div className="invalid-feedback">
+                        Please provide a valid state.
+                    </div>
+                </div>
+
+                <div className="col-md-3 mb-3">
+                    <label for="zip">Zip</label>
+                    <input type="text" className="form-control" id="zip" placeholder="" required/>
+                    <div className="invalid-feedback">
+                        Zip code required.
+                    </div>
+                </div>
+
+            </div>
+
+            <div className="col-md-8 order-md-1">
+                <h4 className="mb-3">Location Details</h4>
+                <form className="needs-validation" novalidate>
+                <div className="row">
+                    <div className="col-md-6 mb-3">
+                        <label for="firstName">Specific Location to Pickup</label>
+                        <input type="text" className="form-control" id="firstName" placeholder="Hotel Vistana, Bukit Jambul" value="" required/>
+                        <div className="invalid-feedback">
+                            Valid location is required.
+                        </div>
+                    </div>
+                    <div className="col-md-6 mb-3">
+                        <label for="lastName">Specific Location to Dropoff</label>
+                        <input type="text" className="form-control" id="lastName" placeholder="Hotel Vistana, Bukit Jambul" value="" required/>
+                        <div className="invalid-feedback">
+                            Valid location is required.
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <hr className="mb-4"/>
+
+            <div className="custom-control custom-checkbox">
+                <input type="checkbox" className="custom-control-input" id="save-info"/>
+                <label className="custom-control-label" for="save-info">Save this information for next time</label>
+            </div>
+            <hr className="mb-4"/>
+
+            <h4 className="mb-3">Payment</h4>
+
+            <div className="d-block my-3">
+                <div className="custom-control custom-radio">
+                    <input id="credit" name="paymentMethod" type="radio" className="custom-control-input" checked required/>
+                    <label className="custom-control-label" for="credit">Credit card</label>
+                </div>
+                <div className="custom-control custom-radio">
+                    <input id="debit" name="paymentMethod" type="radio" className="custom-control-input" required/>
+                    <label className="custom-control-label" for="debit">Debit card</label>
+                </div>
+                <div className="custom-control custom-radio">
+                    <input id="paypal" name="paymentMethod" type="radio" className="custom-control-input" required/>
+                    <label className="custom-control-label" for="paypal">Paypal</label>
+                </div>
+            </div>
+
+            <div className="row">
+                <div className="col-md-6 mb-3">
+                    <label for="cc-name">Name on card</label>
+                    <input type="text" className="form-control" id="cc-name" placeholder="" required/>
+                    <small className="text-muted">Full name as displayed on card</small>
+                    <div className="invalid-feedback">
+                        Name on card is required
+                    </div>
+                </div>
+                <div className="col-md-6 mb-3">
+                    <label for="cc-number">Credit card number</label>
+                    <input type="text" className="form-control" id="cc-number" placeholder="" required/>
+                    <div className="invalid-feedback">
+                        Credit card number is required
+                    </div>
+                </div>
+            </div>
+
+            <div className="row">
+                <div className="col-md-3 mb-3">
+                    <label for="cc-expiration">Expiration</label>
+                    <input type="text" className="form-control" id="cc-expiration" placeholder="" required/>
+                    <div className="invalid-feedback">
+                        Expiration date required
+                    </div>
+                </div>
+                <div className="col-md-3 mb-3">
+                    <label for="cc-expiration">CVV</label>
+                    <input type="text" className="form-control" id="cc-cvv" placeholder="" required/>
+                    <div className="invalid-feedback">
+                        Security code required
+                    </div>
+                </div>
+            </div>
+
+            <hr className="mb-4"/>
+            <button className="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+        </form>
+    </div>
+</div>
+
+<footer className="my-5 pt-5 text-muted text-center text-small">
+    <p className="mb-1">&copy; CatchCar.com 2018</p>
+    <ul className="list-inline">
+        <li className="list-inline-item"><a href="#">Privacy</a></li>
+        <li className="list-inline-item"><a href="#">Terms</a></li>
+        <li className="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+</footer>
+
+</div>
