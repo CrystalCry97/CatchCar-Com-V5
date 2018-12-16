@@ -31,11 +31,11 @@ const mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect(pickupLocation =>[
+    firestoreConnect(getState =>[
         { 
             collection: 'companyCars',
             where:[
-                ['locationArea', '==', pickupLocation.pickupLocation]
+                ['locationArea', '==', getState.pickupLocation]
             ]
         }
     ])

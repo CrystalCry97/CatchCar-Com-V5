@@ -5,25 +5,25 @@ const initState = {
 const companyAuthReducer = (state = initState, action) => {
     switch(action.type){
         case 'COMPANY_LOGIN_ERROR':
-            console.log('login error');
+            //console.log('login error');
             return {
                 ...state,
                 companyAuthError: 'Login Failed'
             }
         case 'COMPANY_LOGIN_SUCCESS':
-            console.log('login success');
+            //console.log('login success');
             return {
                 ...state,
                 companyAuthError: null
             }
         case 'COMPANY_SIGNOUT_SUCCESS':
-            console.log('signout success');
+            //console.log('signout success');
             return {
                 ...state,
                 companyAuthError: null
             }
         case 'COMPANY_SIGNUP_ERROR':
-            console.log('signup error');
+            //console.log('signup error');
             return {
                 ...state,
                 companyAuthError: action.err.message

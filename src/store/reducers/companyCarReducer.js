@@ -9,10 +9,10 @@ const initState = {
 const companyCarReducer = (state = initState, action) => {
     switch(action.type){
         case 'ADD_COMPANY_CAR':
-            console.log('add new car success',action.companyCar);
+            //console.log('add new car success',action.companyCar);
             return state;
         case 'ADD_COMPANY_CAR_ERROR':
-            console.log('add new car error', action.err);
+            //console.log('add new car error', action.err);
             return state;
         default:
             return state;

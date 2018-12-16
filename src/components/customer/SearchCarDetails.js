@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import {Button, Modal, Row, Input} from 'react-materialize'
+import {Button, Modal} from 'react-materialize'
 import moment from 'moment'
 import { carBooking } from '../../store/actions/carBookActions'
 
@@ -12,20 +12,29 @@ class SearchCarDetails extends Component {
         customerName:'',
         customerContact:'',
         customerEmail:'',
-        customerPickUpDate:'',
+        customerPickupDate:'',
         customerPickupTime:'',
         customerReturnDate:'',
-        customerReturnTime:''
+        customerReturnTime:'',
+        bookingCompanyEmail:'',
+        bookingCarName: ''
+
     }
 
     handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value
-        })
+        });
+        const { companyCar } = this.props;
+        const bookingCompanyEmail= companyCar.companyEmail;
+        const bookingCarName= companyCar.carName;
+        this.setState(()=>({bookingCompanyEmail}));
+        this.setState(()=>({bookingCarName}));
     }
     handleSubmit=(e) => {
         e.preventDefault();
         this.props.carBooking(this.state);
+        this.props.history.push('/');
     }
 
 
@@ -36,9 +45,11 @@ class SearchCarDetails extends Component {
             return(
                 <div className="container section project-details">
                     <div className="card z-depth-0">
-                        <div className="card-content">
+                        <div className="card-content center">
                             <img className="car-img" src={companyCar.carImageURL} alt="Car"/>
+                            {companyCar.carPricePerDay ? <h4>RM {companyCar.carPricePerDay}<sub>per day</sub></h4>: null}
                             <span className="card-title">{ companyCar.carName }</span>
+                            <p>Location: {companyCar.locationArea}</p>
                             <p>Number of Seats: {companyCar.carSeater}</p>
                             <p>Transmission   : {companyCar.carTransmission}</p>
                             <p>Other features : {companyCar.carOtherFeatures}</p>
@@ -58,26 +69,23 @@ class SearchCarDetails extends Component {
                                     <label  htmlFor="customerEmail">Email</label>
                                     <input type="email" id="customerEmail" onChange={this.handleChange}/>
                                 </div>
-                                <div className="input-field">
+                                <div className="">
                                     <label  htmlFor="customerPickupDate">Pickup Date</label>
                                     <input type="date" id="customerPickupDate" onChange={this.handleChange}/>
                                 </div>
-                                <div className="input-field">
+                                <div className="">
                                     <label  htmlFor="customerPickupTime">Pickup Time</label>
                                     <input type="time" id="customerPickupTime" onChange={this.handleChange}/>
                                 </div>
-                                <div className="input-field">
+                                <div className="">
                                     <label  htmlFor="customerReturnDate">Return Date</label>
                                     <input type="date" id="customerReturnDate" onChange={this.handleChange}/>
                                 </div>
-                                <div className="input-field">
+                                <div className="">
                                     <label  htmlFor="customerReturnTime">Return Time</label>
                                     <input type="time" id="customerReturnTime" onChange={this.handleChange}/>
                                 </div>
-                                
-
                             
-
                                 <button href='#' className="btn orange lighten-1 z-depth-0">Submit</button>
                                 </form>
                             </Modal>
@@ -92,7 +100,7 @@ class SearchCarDetails extends Component {
         }else{
             return (
                 <div className="container center">
-                    <p>Loading Company Cars. . .</p>
+                    <p>Loading Company Car Details. . .</p>
                 </div>
             )
         }  
