@@ -10,8 +10,10 @@ export const addCompanyCar = (companyCar) => {
             carSeater: companyCar.carSeater,
             carTransmission: companyCar.carTransmission,
             carOtherFeatures: companyCar.carOtherFeatures,
+            carPricePerDay: companyCar.carPricePerDay,
             carImageURL: companyCar.carImageURL,
             companyName: companyProfile.companyName,
+            companyEmail: companyCar.companyEmail,
             companyID: companyID,
             locationArea: companyProfile.headquartersLocation,
             createdAt: new Date()

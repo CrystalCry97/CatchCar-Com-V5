@@ -12,6 +12,8 @@ class Dashboard extends Component {
         if(!companyAuth.uid)
             return <Redirect to='/company-signin' />
 
+        console.log(companyCars);
+
         return (
             <div className="dashboard container">
                 <div className="row">
@@ -33,9 +35,12 @@ const mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([
+    firestoreConnect(getState => [
         { 
-            collection: 'companyCars'
+            collection: 'companyCars',
+            where:[
+                ['companyID', '==', getState.companyAuth.uid]
+            ]
         }
     ])
 )(Dashboard)

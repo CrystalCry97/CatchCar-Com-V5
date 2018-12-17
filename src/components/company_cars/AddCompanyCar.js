@@ -11,12 +11,17 @@ class AddCompanyCar extends Component {
         carName:'',
         carSeater: '',
         carTransmission:'',
-        carOtherFeatures: ''
+        carOtherFeatures: '',
+        carPricePerDay:'',
+        companyEmail:''
     }
     handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value
         })
+        const { companyAuth } = this.props;
+        const companyEmail =companyAuth.email;
+        this.setState(()=>({companyEmail}));
     }
     handleChangeImage= (e) => {
         if(e.target.files[0]){
@@ -51,9 +56,10 @@ class AddCompanyCar extends Component {
     
     render() {
         const { companyAuth } = this.props;
-        //console.log(this.props);
+
         if(!companyAuth.uid)
             return <Redirect to='/company-signin' />
+
         return(
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
@@ -82,6 +88,10 @@ class AddCompanyCar extends Component {
                     <div className="input-field">
                         <label  htmlFor="carOtherFeatures">Other Features</label>
                         <textarea id="carOtherFeatures" className="materialize-textarea" onChange={this.handleChange}/>
+                    </div>
+                    <div className="input-field">
+                        <label  htmlFor="carPricePerDay">Price per day</label>
+                        <textarea id="carPricePerDay" className="materialize-textarea" onChange={this.handleChange}/>
                     </div>
                     <div className="input-field">
                         <button className="btn orange lighten-1 z-depth-0">Add Car</button>
