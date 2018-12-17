@@ -28,7 +28,7 @@ h5{
 
 span.inline {
   display: inline-block; /* the default for span */
-  padding-left:50px;
+  padding:5px;
 }
 
 .circular_img{
@@ -59,8 +59,9 @@ span.inline {
 }
 
 .car-img{
-  width:300px;
+  width:250px;
   height:auto;
+  
 }
 
 .card_center{
@@ -69,7 +70,7 @@ span.inline {
 }
 
 .card_box{
-  padding: 25px;
+  padding: 5px;
   z-index: 1;
   background: transparent;
   overflow: hidden;

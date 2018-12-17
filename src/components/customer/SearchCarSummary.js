@@ -3,7 +3,7 @@ import moment from 'moment'
 
 const SearchCarSummary = ({companyCar}) =>{
     return(
-        <div className="card_content">
+        <div className="card_center">
             <div className="card-content card_box grey-text text-darken-1">
                 <span className="inline">
                     <img className="car-img" src={companyCar.carImageURL} alt="Car"></img>
