@@ -2,21 +2,26 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import {Button, Modal, Row, Input} from 'react-materialize'
+import {Button, Modal } from 'react-materialize'
 import moment from 'moment'
 import { carBooking } from '../../store/actions/carBookActions'
 
 
 class SearchCarDetails extends Component {
-    state ={
-        customerName:'',
-        customerContact:'',
-        customerEmail:'',
-        customerPickUpDate:'',
-        customerPickupTime:'',
-        customerReturnDate:'',
-        customerReturnTime:''
-    }
+    constructor() {
+        super();
+        
+        this.state = {
+          customerName:'',
+          customerContact:'',
+          customerEmail:'',
+          customerPickUpDate:'',
+          customerPickupTime:'',
+          customerReturnDate:'',
+          customerReturnTime:'',
+          paymentMethod:''
+        };
+      }
 
     handleChange = (e) => {
         this.setState({
@@ -26,6 +31,7 @@ class SearchCarDetails extends Component {
     handleSubmit=(e) => {
         e.preventDefault();
         this.props.carBooking(this.state);
+        
     }
 
 
@@ -46,39 +52,80 @@ class SearchCarDetails extends Component {
                                 header='Booking Information'
                                 trigger={<Button>BOOK NOW !</Button>}>
                                 <form onSubmit={this.handleSubmit}>
-                                <div className="input-field">
-                                    <label  htmlFor="customerName">Your Name</label>
-                                    <input type="text" id="customerName" onChange={this.handleChange}/>
-                                </div>
-                                <div className="input-field">
-                                    <label  htmlFor="customerContact">Contact No</label>
-                                    <input type="tel" id="customerContact" onChange={this.handleChange}/>
-                                </div>
-                                <div className="input-field">
-                                    <label  htmlFor="customerEmail">Email</label>
-                                    <input type="email" id="customerEmail" onChange={this.handleChange}/>
-                                </div>
-                                <div className="input-field">
-                                    <label  htmlFor="customerPickupDate">Pickup Date</label>
-                                    <input type="date" id="customerPickupDate" onChange={this.handleChange}/>
-                                </div>
-                                <div className="input-field">
-                                    <label  htmlFor="customerPickupTime">Pickup Time</label>
-                                    <input type="time" id="customerPickupTime" onChange={this.handleChange}/>
-                                </div>
-                                <div className="input-field">
-                                    <label  htmlFor="customerReturnDate">Return Date</label>
-                                    <input type="date" id="customerReturnDate" onChange={this.handleChange}/>
-                                </div>
-                                <div className="input-field">
-                                    <label  htmlFor="customerReturnTime">Return Time</label>
-                                    <input type="time" id="customerReturnTime" onChange={this.handleChange}/>
-                                </div>
-                                
+                                    <div className="input-field">
+                                        <label  htmlFor="customerName">Your Name</label>
+                                        <input type="text" id="customerName" onChange={this.handleChange}/>
+                                    </div>
+                                    <div className="input-field">
+                                        <label  htmlFor="customerContact">Contact No</label>
+                                        <input type="tel" id="customerContact" onChange={this.handleChange}/>
+                                    </div>
+                                    <div className="input-field">
+                                        <label  htmlFor="customerEmail">Email</label>
+                                        <input type="email" id="customerEmail" onChange={this.handleChange}/>
+                                    </div>
+                                    <div className="input-field">
+                                        <label  htmlFor="customerPickupDate">Pickup Date</label>
+                                        <input type="date" id="customerPickupDate" onChange={this.handleChange}/>
+                                    </div>
+                                    <div className="input-field">
+                                        <label  htmlFor="customerPickupTime">Pickup Time</label>
+                                        <input type="time" id="customerPickupTime" onChange={this.handleChange}/>
+                                    </div>
+                                    <div className="input-field">
+                                        <label  htmlFor="customerReturnDate">Return Date</label>
+                                        <input type="date" id="customerReturnDate" onChange={this.handleChange}/>
+                                    </div>
+                                    <div className="input-field">
+                                        <label  htmlFor="customerReturnTime">Return Time</label>
+                                        <input type="time" id="customerReturnTime" onChange={this.handleChange}/>
+                                    </div>
 
-                            
+                                    <h5> Payment </h5>
+                                    <p>
+                                        <label>
+                                            <input type="radio" id="credit" name ="paymentMethod" value ="CreditCard" onChange={this.handleChange}/>
+                                            <span>Credit Card</span>
+                                        </label>
+                                    </p>
 
-                                <button href='#' className="btn orange lighten-1 z-depth-0">Submit</button>
+                                    <p>
+                                        <label>
+                                            <input type="radio" id="debit" name ="paymentMethod" value ="DebitCard" onChange={this.handleChange}/>
+                                            <span>Debit Card</span>
+                                        </label>
+                                    </p>
+
+                                    <p>
+                                        <label>
+                                            <input type="radio" id="paypal" name ="paymentMethod" value ="PayPal" onChange={this.handleChange}/>
+                                            <span>Paypal</span>
+                                        </label>
+                                    </p>
+
+                                    {/* <div className="row">
+                                        <div className="col-md-6 mb-3">
+                                            <label htmlFor="cc-name">Name on card</label>
+                                            <input type="text" className="form-control" id="cc-name" placeholder="" required/>
+                                        </div>
+                                        <div className="col-md-6 mb-3">
+                                            <label htmlFor="cc-number">Credit card number</label>
+                                            <input type="text" className="form-control" id="cc-number" placeholder="" required/>
+                                        </div>
+                                    </div>
+
+                                    <div className="row">
+                                        <div className="col-md-3 mb-3">
+                                            <label htmlFor="cc-expiration">Expiration</label>
+                                            <input type="text" className="form-control" id="cc-expiration" placeholder="" required/>
+                                        </div>
+                                        <div className="col-md-3 mb-3">
+                                            <label htmlFor="cc-expiration">CVV</label>
+                                            <input type="text" className="form-control" id="cc-cvv" placeholder="" required/>
+                                        </div>
+                                    </div> */}
+
+                                    <button href='#' className="btn orange lighten-1 z-depth-0">Submit</button>
                                 </form>
                             </Modal>
                         </div>
