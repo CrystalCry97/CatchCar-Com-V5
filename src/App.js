@@ -29,6 +29,7 @@ class App extends Component {
             <Route path='/company-profile' component={CompanyProfile} />
             <Route path='/company-addcar' component={AddCompanyCar} />
             <Route path='/searchresult' component={SearchResultPage} />
+
           </Switch>
         </div>
       </BrowserRouter>
