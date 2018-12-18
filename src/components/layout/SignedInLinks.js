@@ -10,7 +10,7 @@ const SignedInLinks = (props) => {
                 <li><NavLink to="/company-addcar">Add New Car</NavLink></li>
                 <li><NavLink to="/company-profile">Company Profile</NavLink></li>
                 {/* eslint-disable-next-line */}
-                <li><a href="/company-signin" onClick={props.companySignOut}>Log Out</a></li>
+                <li><a href="/" onClick={props.companySignOut}>Log Out</a></li>
         </div>        
     )
 }
