@@ -57,7 +57,7 @@ class CompanySignUp extends Component {
                         <input type="text" id="businessLicenseNo" onChange={this.handleChange}/>
                     </div>
                     <div className="input-field">
-                        <button className="btn orange lighten-1 z-depth-0">Login</button>
+                        <button className="btn orange lighten-1 z-depth-0">Signup</button>
                         <div className="red-text center">
                             { companyAuthError ? <p>{companyAuthError}</p>: null}
                         </div>

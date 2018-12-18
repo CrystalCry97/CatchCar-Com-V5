@@ -24,6 +24,7 @@ form button, form h5{
 
 h5{
   font-weight:bold;
+  color: #e7a411;
 }
 
 span.inline {
@@ -124,6 +125,23 @@ span.inline {
 }
 .block{
   display: block;
+}
+
+.notification{
+  margin-top: 15px;
+  padding:10px;
+  background:rgba(0, 0, 0, 0.589);
+  border-radius: 5px;
+}
+
+.bookingList p{
+  color:white;
+  cursor: pointer;
+}
+
+.bookingList p span{
+  color:rgb(0, 135, 212);
+  font-weight:bold;
 }
 
 input[type=text]:not(.browser-default):focus:not([readonly]),
